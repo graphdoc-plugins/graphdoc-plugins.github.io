@@ -3,7 +3,7 @@
   <a href="https://graphdoc-plugins.github.io"><img src="operations/graphdoc-plugin-operations.png" alt=" "/></a>
 </p>
 
-<h1 align="center">GraphQL documentation using graphdoc with Isolated Operations</h1>
+<h1 align="center">GraphQL schema HTML documentation generation, using graphdoc with Isolated Operations</h1>
 
 [![graphdoc-plugin-operations](https://badgen.net/badge/homepage/graphdoc-plugin-operations/blue)](https://graphdoc-plugins.github.io)
 [![graphdoc-plugin-operations](https://badgen.net/badge/npm%20pack/graphdoc-plugin-operations/blue)](https://www.npmjs.com/package/graphdoc-plugin-operations)
@@ -25,8 +25,8 @@ __________________
 ```json
   "devDependencies": {
     "@2fd/graphdoc": "2.4.0",
-    "graphdoc-plugin-operations": "1.0.0",
-    "graphdoc-plugin-flexible": "1.0.0",
+    "graphdoc-plugin-operations": "2.0.0",
+    "graphdoc-plugin-flexible": "1.0.2",
 ```
 
 2 . If default options are not suitable, then configure `graphdoc-plugin-operations`:
@@ -38,7 +38,6 @@ __________________
   "graphdoc-plugin-operations": {
     "documentTitle": "The Description",
     "navigationTitle": "The Operations",
-    "extractDescription": false,
     "enableAssets": false
   }
 }
@@ -54,11 +53,16 @@ __________________
   },
   "graphdoc-plugin-flexible": {
     "document.schema": { "disable": true }
-  }
+  },
+  "devDependencies": {
+    "@2fd/graphdoc": "2.4.0",
+    "graphdoc-plugin-flexible": "1.0.2",
+    "graphdoc-plugin-operations": "2.0.0",
+    "graphdoc-plugin-schema": "2.0.0",
 ```
 
 > `graphdoc-plugin-flexible` is required to disable `document.schema` plugin and  allow custom types.  
-> `graphdoc-plugin-schema` is required to substitute disabled `document.schema` plugin.  
+> `graphdoc-plugin-schema` will substitute disabled `document.schema` plugin when required.  
 > `graphdoc/../../` this is required to get external plugins working in `graphdoc`.
 
 __________________
@@ -78,7 +82,6 @@ __________________
   "graphdoc-plugin-operations": {
     "documentTitle": "Description",
     "navigationTitle": "Operations",
-    "extractDescription": true,
     "enableAssets": true
   }
 }
@@ -86,8 +89,6 @@ __________________
 
 * `documentTitle`: title of the document section.
 * `navigationTitle`: title of the operations section in the navigation.
-* `extractDescription`: if set to `false`, then description of the operation will be inside the "code block".
-  * Extracted description is render in a `div` with `class="x-desc"`.
 * `enableAssets`: if set to `false`, then it will disable all the assets provided by the plugin, i.e. script and css files will not be included.
 
 The following shows where the `documentTitle`, the `navigationTitle` and the "code block" are located, using the example documentation created by [`graphdoc`](https://www.npmjs.com/package/@2fd/graphdoc), [Pokemon GraphQL HTML Documentation](https://2fd.github.io/graphdoc/pokemon/pokemonattack.doc.html), using [Pokemon GraphQL schema](https://github.com/lucasbento/graphql-pokemon):
@@ -106,11 +107,16 @@ The following shows where the `documentTitle`, the `navigationTitle` and the "co
   },
   "devDependencies": {
     "@2fd/graphdoc": "2.4.0",
-    "graphdoc-plugin-flexible": "1.0.0"
+    "graphdoc-plugin-flexible": "1.0.2"
   },
   "graphdoc-plugin-flexible": {
     "document.schema": { "disable": true }
-  }
+  },
+  "devDependencies": {
+    "@2fd/graphdoc": "2.4.0",
+    "graphdoc-plugin-flexible": "1.0.2",
+    "graphdoc-plugin-operations": "2.0.0",
+    "graphdoc-plugin-schema": "2.0.0",
 ```
 
 > You can use [`graphdoc-plugin-schema`](https://graphdoc-plugins.github.io) plugin as an alternative to  `document-schema` plugin.
@@ -122,17 +128,18 @@ The following shows where the `documentTitle`, the `navigationTitle` and the "co
       &#123;&#123;#type.methodName}}&#60;p class="slds-text-title--caps slds-text-color--weak">Operation&#60;/p>&#123;&#123;/type.methodName}}  
     &#123;&#123;/type}}*
 
-* When using `extractDescription: true`, you may want to remove *&#123;&#123;&#123;description}}}* in "title" section of `main.mustache` template.
+## Online Examples
+
+* Pokemon GraphQL schema: [Project](https://github.com/gmullerb/base-graphdoc-yarn) and [Online generated documentation](https://gmullerb.gitlab.io/base-graphdoc-yarn).
+* Github GraphQL schema: [Project](https://github.com/gmullerb/base-graphdoc-npm) and [Online generated documentation](https://gmullerb.gitlab.io/base-graphdoc-npm).
 
 __________________
 
 ## Prerequisites
 
 * [`"@2fd/graphdoc": "2.4.0"`](https://www.npmjs.com/package/@2fd/graphdoc/v/2.4.0).
-* [`"marked": "*"`](https://www.npmjs.com/package/marked).
 
 > graphdoc can work with older versions of GraphQL (description syntax: #), and new versions (description syntax: """), [How to configure graphdoc](https://graphdoc-plugins.github.io/docs/how-to-configure-graphdoc.html).  
-> `marked` is installed when `@2fd/graphdoc` is installed although a newer version can be used.
 
 __________________
 
