@@ -147,7 +147,7 @@ The plugins provided by [`graphdoc`](https://www.npmjs.com/package/@2fd/graphdoc
 * `document.schema`: Generates the HTML "Definition" section for any GraphQL element.
 * `document.require`: Generates HTML "Required By" section for any GraphQL element.
 
-The following shows the sections worked by the [`graphdoc`](https://www.npmjs.com/package/@2fd/graphdoc) plugins, using the example created by [`graphdoc`](https://www.npmjs.com/package/@2fd/graphdoc), [Pokemon GraphQL](https://2fd.github.io/graphdoc/pokemon/pokemonattack.doc.html):
+The following shows the sections worked by the [`graphdoc`](https://www.npmjs.com/package/@2fd/graphdoc) plugins, using the example created by [`graphdoc`](https://www.npmjs.com/package/@2fd/graphdoc), [Pokemon GraphQL HTML Documentation](https://gmullerb.gitlab.io/base-graphdoc-yarn/pokemonattack.doc.html):
 
 ![Graphdoc sections](flexible/graphdoc-sections.svg)
 
